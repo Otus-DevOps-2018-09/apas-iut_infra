@@ -72,10 +72,16 @@ gcloud compute firewall-rules create default-puma-server \
 ## Homework N5
 
 This homework was devoted to the study of the Packer utility as a tool for creating images of virtual machines.
+
 We made two teplates for fast images creation: `packer/ubuntu16.json` and `packer/immutable.json`. First template is used to implement "Fry" apporoach while second demonstated the "Bake" method.
-To use them first rename `variables.json.exapmle` to `variables.json` and make the appropriate variables change. Then run the Packer tool like:
+To use them first rename `variables.json.exapmle` to `variables.json` and make the appropriate variables change.
+
+Then run the Packer tool like:
+
 >packer build -var-file=variables.json ubuntu16.json
+
 or
+
 >packer build -var-file=variables.json immutable.json
 
 File `packer/config-scripts/create-reddit-vm.sh` includes the example of usage of previously prepared Packer "bake" image to create virtual machine running Reddit application.
