@@ -88,13 +88,22 @@ File `packer/config-scripts/create-reddit-vm.sh` includes the example of usage o
 
 ## Homework N6
 
-We developed the basic parametrized Terraform configuration for reddit application deployment from Packer base image. Examples of input variables can be found in `terraform/terraform.tfvars.example`.
+We developed basic parametrized Terraform configuration for Reddit application deployment from Packer base image. Examples of input variables can be found in `terraform/terraform.tfvars.example`.
 
-To apply the configuration to GCP use:
+To apply the configuration to GCP use and deplot the Reddit application:
 ```
 cd terratorm
+mv terraform.tfvars.example terraform.tfvars
 terraform init
+terraform plan
 teffaform apply
 ```
+Running application can we found at: `http://app_external_ip:9292` The `app_external_ip` is the output variable of Terraform configuration.
 
-Added several public ssh keys to the project level. **NOTE**: *In case of Terraform usage you can't mix manually added and Terraform applied ssh-keys. Terraform will delete any of manually added keys.*
+#### Extra task1
+
+Several public ssh keys were added to the project level. **NOTE**: *In case of Terraform usage you can't mix manually added and Terraform applied ssh-keys. Terraform will delete any of manually added keys.*
+
+#### Extra task2
+
+HTTP Load ballancer was added to Terraform configuration. Reddit application can be deployed in any number of instances with `vm_instances_number` variable. Running application can we found at: `http://lb_external_ip` The `lb_external_ip` is the IP-address of load balance, it is output variable of Terraform configuration.
