@@ -2,8 +2,9 @@
 1. [Homewok N3](#homework-n3)
 2. [Homewok N4](#homework-n4)
 3. [Homewok N5](#homework-n5)
+4. [Homewok N6](#homework-n6)
 
-## Homework N3
+
 
 #### Log in via command line
 
@@ -85,3 +86,12 @@ or
 >packer build -var-file=variables.json immutable.json
 
 File `packer/config-scripts/create-reddit-vm.sh` includes the example of usage of previously prepared Packer "bake" image to create virtual machine running Reddit application.
+
+## Homework N6
+
+We developed the basic parametrized Terraform configuration for reddit application deployment from Packer base image. Examples of input variables can be found in `terraform/terraform.tfvars.example`.
+
+To apply the configuration to GCP use:
+
+>teffaform apply
+
