@@ -5,7 +5,6 @@
 4. [Homewok N6](#homework-n6)
 
 
-
 #### Log in via command line
 
 To log in to `someinternalhost` from working device via command line use the following command:
@@ -92,6 +91,10 @@ File `packer/config-scripts/create-reddit-vm.sh` includes the example of usage o
 We developed the basic parametrized Terraform configuration for reddit application deployment from Packer base image. Examples of input variables can be found in `terraform/terraform.tfvars.example`.
 
 To apply the configuration to GCP use:
+```
+cd terratorm
+terraform init
+teffaform apply
+```
 
->teffaform apply
-
+Added several public ssh keys to the project level. **NOTE**: *In case of Terraform usage you can't mix manually added and Terraform applied ssh-keys. Terraform will delete any of manually added keys.*
