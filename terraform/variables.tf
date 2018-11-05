@@ -23,3 +23,8 @@ variable private_key_path {
 variable disk_image {
   description = "Disk image"
 }
+
+variable vm_instances_number {
+  description = "Number of VM instances with application to create"
+  default     = 1
+}
