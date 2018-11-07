@@ -1,4 +1,9 @@
-## Homewok N3
+# Index
+1. [Homewok N3](#homework-n3)
+2. [Homewok N4](#homework-n4)
+3. [Homewok N5](#homework-n5)
+
+## Homework N3
 
 #### Log in via command line
 
@@ -23,7 +28,7 @@ Host someinternalhost
 bastion_IP = 35.210.86.252
 someinternalhost_IP = 10.164.0.2
 
-## Homewok N4
+## Homework N4
 
 #### Data for bot connection.
 testapp_IP = 35.195.75.124
@@ -63,3 +68,20 @@ gcloud compute firewall-rules create default-puma-server \
   --allow tcp:9292 \
   --description="Allow from any to Puma-server"
 ```
+
+## Homework N5
+
+This homework was devoted to the study of the Packer utility as a tool for creating images of virtual machines.
+
+We made two teplates for fast images creation: `packer/ubuntu16.json` and `packer/immutable.json`. First template is used to implement "Fry" apporoach while second demonstated the "Bake" method.
+To use them first rename `variables.json.exapmle` to `variables.json` and make the appropriate variables change.
+
+Then run the Packer tool like:
+
+>packer build -var-file=variables.json ubuntu16.json
+
+or
+
+>packer build -var-file=variables.json immutable.json
+
+File `packer/config-scripts/create-reddit-vm.sh` includes the example of usage of previously prepared Packer "bake" image to create virtual machine running Reddit application.

@@ -1,0 +1,19 @@
+[Unit]
+Description=Puma Server
+After=syslog.target network.target
+
+[Service]
+Type=simple
+PIDFile=/home/appuser/reddit/puma.pid
+WorkingDirectory=/home/appuser/reddit
+User=appuser
+Group=appuser
+ExecStart=/usr/local/bin/pumactl -P /home/appuser/reddit/puma.pid start
+ExecStop=/usr/local/bin/pumactl -P /home/appuser/reddit/puma.pid stop
+ExecReload=/usr/local/bin/pumactl -P /home/appuser/reddit/puma.pid restart
+TimeoutSec=30
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,10 @@
+{
+    "project_id": "infra-123456",
+    "source_image_family": "ubuntu-1604-lts",
+    "machine_type": "f1-micro",
+    "image_description": "Image of Ruby and MongoDB",
+    "disk_size": "10",
+    "disk_type": "pd-standard",
+    "network": "default",
+    "tags": "reddit-app,packer"
+}
