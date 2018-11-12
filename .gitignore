@@ -1,1 +1,8 @@
 variables.json
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfstate.lock.*
+*.tfvars
+.terraform/
+
