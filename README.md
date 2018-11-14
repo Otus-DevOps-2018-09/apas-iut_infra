@@ -3,7 +3,9 @@
 2. [Homewok N4](#homework-n4)
 3. [Homewok N5](#homework-n5)
 4. [Homewok N6](#homework-n6)
+5. [Homewok N7](#homework-n7)
 
+## Homework N3
 
 #### Log in via command line
 
@@ -107,3 +109,5 @@ Several public ssh keys were added to the project level. **NOTE**: *In case of T
 #### Extra task2
 
 HTTP Load ballancer was added to Terraform configuration. Reddit application can be deployed in any number of instances with `vm_instances_number` variable. Running application can we found at: `http://lb_external_ip` The `lb_external_ip` is the IP-address of load balance, it is output variable of Terraform configuration.
+
+## Homework N7
