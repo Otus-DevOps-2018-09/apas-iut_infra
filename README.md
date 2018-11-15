@@ -111,3 +111,34 @@ Several public ssh keys were added to the project level. **NOTE**: *In case of T
 HTTP Load ballancer was added to Terraform configuration. Reddit application can be deployed in any number of instances with `vm_instances_number` variable. Running application can we found at: `http://lb_external_ip` The `lb_external_ip` is the IP-address of load balance, it is output variable of Terraform configuration.
 
 ## Homework N7
+
+This homework was devoted to decomposition of complex terraform configurations and code reuse.
+
+* We learned how to import existing and running platfrom componets into terraform configuration with `terraform init` command.
+* Examineted explicit and implicit resorces relationship in terraform configuration.
+* Tried a simple way of decomposition of terraform configuration when one large file is splited into several smaller according to the logical entities.
+* The we learned the advanced way of decompostion - terraform modules. They make terrafrom configuration easy to read and allow code reusage.
+* And at the end we tested the official HashiCorp Terraform Register which includes code of terraform modules writen by other people.
+
+#### Terraform module app
+Parameter `fw_app_port` added which specifies the tcp port number wich will be opened at VCP firewall for the application access
+
+#### Terraform module vcp
+Parameter `source_rangers` added to specify the IP addresses which are allowed to connect to ssh port of any VM instance.
+
+#### Output terraform variables
+* `app_external_ip` - shows extarnal nat IP-address of app instance
+* `db_external_ip`` - shows extarnal nat IP-address of db instance
+* `vpc_source_ip_ranges` - shows allowed IP-addresses for ssh connection to app and db instances.
+
+#### New Packer images
+`packer/app.json` and `packer/db.json` - two new templates which are used now instead of common ubuntu16.json
+
+#### Current terraform configuratoins
+* `terraform/stage/main.tf` - parametrized configuration with own variables for stage deployment
+* `terraform/prod/main.tf` - parametrized configuration with own variables for prod deployment
+* `terraform/storage-bucket.tf` - example of usage of `terraform-google-storage-bucket` HashiCorp module
+
+#### Extra task 1
+We moved stage and prod terrafrom backend from local disk to GCS buket. It allows us to store terraform state-file safely and makes available team-work with the same terraform configuration.
+Configuration is described in `backend.tf` files. [official doc](https://www.terraform.io/docs/backends/types/gcs.html)
