@@ -4,6 +4,7 @@
 3. [Homewok N5](#homework-n5)
 4. [Homewok N6](#homework-n6)
 5. [Homewok N7](#homework-n7)
+6. [Homewok N8](#homework-n8)
 
 ## Homework N3
 
@@ -128,7 +129,7 @@ Parameter `source_rangers` added to specify the IP addresses which are allowed t
 
 #### Output terraform variables
 * `app_external_ip` - shows extarnal nat IP-address of app instance
-* `db_external_ip`` - shows extarnal nat IP-address of db instance
+* `db_external_ip` - shows extarnal nat IP-address of db instance
 * `vpc_source_ip_ranges` - shows allowed IP-addresses for ssh connection to app and db instances.
 
 #### New Packer images
@@ -142,3 +143,24 @@ Parameter `source_rangers` added to specify the IP addresses which are allowed t
 #### Extra task 1
 We moved stage and prod terrafrom backend from local disk to GCS buket. It allows us to store terraform state-file safely and makes available team-work with the same terraform configuration.
 Configuration is described in `backend.tf` files. [official doc](https://www.terraform.io/docs/backends/types/gcs.html)
+
+## Homework N8
+
+First steps with Ansible automation tool.
+
+* We installed Ansible tool with all necessary dependences.
+* Configured Ansible to allow it to interract with our VM instances at GCP.
+* We learned about different Ansible inventory formats: ini, yaml and dynamic.
+* We tried to use Ansible modules: ping, command, shell, systemd, service, git.
+* Finaly we wrote very basic Ansible playbook.
+
+#### Usage of playbooks
+>ansible-playbook ansible/clone.yml
+
+The Ansible will check if required changes are already made or not. If Ansible makes any changes on remote host then result message will include `ok=2 changed=1`, otherwise the output will be just `ok=2`.
+
+#### Extra task
+>ansible all -i get-dynamic-inventory.sh -m ping
+
+The following command will apply the dynamic configuration. Executable script `git-dynamic-inventory.sh` with `--list` argument will provide the JSON-structure with VM instances of Ansible tool.
+[official doc](https://docs.ansible.com/ansible/latest/dev_guide/developing_inventory.html)
