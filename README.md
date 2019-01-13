@@ -5,6 +5,7 @@
 4. [Homewok N6](#homework-n6)
 5. [Homewok N7](#homework-n7)
 6. [Homewok N8](#homework-n8)
+7. [Homewok N8](#homework-n9)
 
 ## Homework N3
 
@@ -164,3 +165,26 @@ The Ansible will check if required changes are already made or not. If Ansible m
 
 The following command will apply the dynamic configuration. Executable script `git-dynamic-inventory.sh` with `--list` argument will provide the JSON-structure with VM instances of Ansible tool.
 [official doc](https://docs.ansible.com/ansible/latest/dev_guide/developing_inventory.html)
+
+## Homework N9
+
+A continuation of work with Ansible automation tool. We implemented 3 version of the same task.
+
+* Single playbook with single play `ansible/reddit_app_one_play.yml`
+* Single playbook with 3 plays `ansible/reddit_app_multiple_plays.yml`
+* 3 playbooks united with one main playbook `ansible/site.yml`
+* In addition we updated packer provisioners with 2 playbooks `ansible/packer_app.yml` and `ansible/packer_db.yml`
+
+#### To deploy Reddit-app in updated envitonment do the following.
+
+First build new images:
+>packer build -var-file=packer/variables.json packer/db.json
+>packer build -var-file=packer/variables.json packer/app.json
+
+Then deploy stage environment in terrafrom:
+>cd terraform/stage
+>terraform destroy
+>terraform apply
+
+Update app and db servers IPs at `ansible/inventory` and at last apply ansible playbook:
+>ansible-playbook -i ansible/inventory ansible/site.yml
