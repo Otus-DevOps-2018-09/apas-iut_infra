@@ -9,7 +9,7 @@ module "app" {
   public_key_path = "${var.public_key_path}"
   zone            = "${var.zone}"
   app_disk_image  = "${var.app_disk_image}"
-  fw_app_port     = "9292"
+  fw_app_port     = ["80", "9292"]
 }
 
 module "db" {
@@ -21,5 +21,5 @@ module "db" {
 
 module "vpc" {
   source        = "../modules/vpc"
-  source_ranges = ["5.5.5.5/32"]
+  source_ranges = ["0.0.0.0/0"]
 }

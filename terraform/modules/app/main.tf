@@ -43,7 +43,7 @@ resource "google_compute_firewall" "firewall_puma" {
   # Allowed type of access
   allow {
     protocol = "tcp"
-    ports    = ["${var.fw_app_port}"]
+    ports    = "${var.fw_app_port}"
   }
 
   # Allowed addresses

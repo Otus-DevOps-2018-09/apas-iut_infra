@@ -5,7 +5,8 @@
 4. [Homewok N6](#homework-n6)
 5. [Homewok N7](#homework-n7)
 6. [Homewok N8](#homework-n8)
-7. [Homewok N8](#homework-n9)
+7. [Homewok N9](#homework-n9)
+8. [Homewok N10](#homework-n10)
 
 ## Homework N3
 
@@ -188,3 +189,34 @@ Then deploy stage environment in terrafrom:
 
 Update app and db servers IPs at `ansible/inventory` and at last apply ansible playbook:
 >ansible-playbook -i ansible/inventory ansible/site.yml
+
+## Homework N10
+
+Archiving more advanced stage of Ansible tool usage
+
+* We created 2 Ansible roles by using `ansible-galaxy` utility, one for db server, another for app server.
+* We made 2 independent environment for stage (default) and prod. Every environment has own set of variables but still using the same common roles: app and db.
+* We uses Ansible Community role jdauphant.nginx to create reverse proxy for our application.
+* Finaly we tested Ansible Vault feature to safely secrets of our project.
+
+#### To deploy application in stage environment do the following:
+
+From the dirrectory `terraform/stage`
+>terraform init
+>terraform get
+>terraform apply
+
+From the dirrectory `ansible`
+>copy ip addresses of app and db servers to ansible/environment/stage/inventory
+>ansible-playbook playbooks/site.yml
+
+#### To deploy application in prod environment do  the following:
+
+From the dirrectory `terraform/prod`
+>terraform init
+>terraform get
+>terraform apply
+
+From the dirrectory `ansible`
+>copy ip addresses of app and db servers to ansible/environment/prod/inventory
+>ansible-playbook -i environments/prod/inventory playbooks/site.yml

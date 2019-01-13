@@ -14,5 +14,5 @@ variable app_disk_image {
 
 variable fw_app_port {
   description = "Port where application is installed to open the firewall"
-  default     = "9292"
+  default     = ["9292"]
 }
