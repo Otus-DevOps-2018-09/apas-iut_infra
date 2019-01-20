@@ -7,6 +7,8 @@
 6. [Homewok N8](#homework-n8)
 7. [Homewok N9](#homework-n9)
 8. [Homewok N10](#homework-n10)
+9. [Homewok N11](#homework-n11)
+
 
 ## Homework N3
 
@@ -220,3 +222,20 @@ From the dirrectory `terraform/prod`
 From the dirrectory `ansible`
 >copy ip addresses of app and db servers to ansible/environment/prod/inventory
 >ansible-playbook -i environments/prod/inventory playbooks/site.yml
+
+## Homework N11
+
+Using of Vagrant to local development and using of Molecule for writing tests for Ansible roles.
+
+* Vagrant can be used to deploy VMs localy without usage of real cloud.
+* Vagrant VMs can be provisioned with Anslible roles.
+* Ansible roles can be tested inside Vagrant with Molecule python package.
+
+To run Vagrant test environment use
+>cd ansible
+>vagrant up
+
+To test DB role with Molecula test do the following
+>cd ansible/roles/db
+>molecula create
+>molecula verify
